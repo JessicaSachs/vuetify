@@ -1,0 +1,6 @@
+{
+    "testFiles": "**/*.cy.*",
+    "componentFolder": "src",
+    "pluginsFile": "./test/plugins.ts",
+    "supportFile": false
+}
