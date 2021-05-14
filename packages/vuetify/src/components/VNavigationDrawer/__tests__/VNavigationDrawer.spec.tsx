@@ -1,3 +1,5 @@
+declare const expect: jest.Expect;
+
 // Components
 import { VLayout } from '@/components'
 import { VNavigationDrawer } from '..'

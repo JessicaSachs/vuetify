@@ -1,4 +1,4 @@
-/// <reference types="../../../cypress/types" />
+/// <reference types="../../../types/cypress" />
 
 import { CenteredGrid } from '@/../cypress/templates'
 import VBtn from './VBtn'
