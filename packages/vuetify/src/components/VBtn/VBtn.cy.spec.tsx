@@ -278,6 +278,6 @@ describe('VBtn', () => {
 })
 
 // Useful to preview all of the variants and pre-made examples
-describe.skip('Showcase', { viewportHeight: 1000, viewportWidth: 1000 }, () => {
+describe('Showcase', { viewportHeight: 1000, viewportWidth: 1000 }, () => {
   generate({ stories, props, component: VBtn as unknown })
 })

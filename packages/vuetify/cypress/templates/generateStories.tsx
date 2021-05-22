@@ -41,8 +41,9 @@ export const makeExamplesFromStories = (stories: Stories): Example[] => {
     acc.push({
       name: key,
       mount: <wrapper>
-        { title(key) }
-        { grid(value) }
+        { value && title(key) }
+        { value && grid(value) }
+
       </wrapper>,
     })
     return acc
@@ -78,7 +79,7 @@ export const makeExamplesFromProps = (props: Props, component: JSX.Element): Exa
     acc.push({
       name: key,
       mount: <wrapper>
-        { title(key) }
+        { variants && variants.length && title(key) }
         { grid(variants) }
       </wrapper>
     })
@@ -104,11 +105,22 @@ export const generate = ({ props, stories, component }: GenerateConfiguration) =
   }
 
   return it('renders everything', () => {
+    const shouldRender = (examples) => {
+      debugger;
+      return examples && examples.length > 0
+    }
+
+
     cy.mount(() => <>
-      <h2 class="mx-4 mt-10 mb-4">Stories</h2>
-      { exampleStories && exampleStories.map(s => s.mount) }
-      <h2 class="mx-4 mt-10 mb-4">Props</h2>
-      { exampleProps && exampleProps.map(s => s.mount) }
+      { shouldRender(exampleStories) ? <>
+          <h2 class="mx-4 mt-10 mb-4">Stories</h2>
+          { exampleStories.map(s => s.mount) }
+        </> :
+          shouldRender(exampleProps) ? <>
+            <h2 class="mx-4 mt-10 mb-4">Props</h2>
+            { exampleProps.map(s => s.mount) }
+          </> : <></>
+        }
     </>)
   })
 }
