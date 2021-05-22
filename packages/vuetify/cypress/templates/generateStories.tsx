@@ -106,21 +106,21 @@ export const generate = ({ props, stories, component }: GenerateConfiguration) =
 
   return it('renders everything', () => {
     const shouldRender = (examples) => {
-      debugger;
       return examples && examples.length > 0
     }
 
 
     cy.mount(() => <>
-      { shouldRender(exampleStories) ? <>
-          <h2 class="mx-4 mt-10 mb-4">Stories</h2>
+      { shouldRender(exampleStories) && <>
+        <h2 class="mx-4 mt-10 mb-4">Stories</h2>
           { exampleStories.map(s => s.mount) }
-        </> :
-          shouldRender(exampleProps) ? <>
-            <h2 class="mx-4 mt-10 mb-4">Props</h2>
-            { exampleProps.map(s => s.mount) }
-          </> : <></>
-        }
+        </>
+      }
+      { shouldRender(exampleProps) && <>
+          <h2 class="mx-4 mt-10 mb-4">Props</h2>
+          { exampleProps.map(s => s.mount) }
+        </>
+      }
     </>)
   })
 }
